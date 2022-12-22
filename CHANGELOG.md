@@ -1,3 +1,7 @@
+## v0.0.4
+
+- add documentation info in pubspec.yaml
+
 ## v0.0.3
 
 - add platforms info in pubspec.yaml

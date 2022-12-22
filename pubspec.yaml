@@ -1,7 +1,7 @@
 # `flutter pub publish` to publishing
 name: server_driven_ui
 description: Make easy to implement Server Driven UI pattern on Flutter.
-version: 0.0.3
+version: 0.0.4
 platforms:
   android:
   ios:
@@ -17,3 +17,4 @@ dependencies:
   http_parser: ^4.0.2
 
 repository: https://github.com/rhea-so-lab/flutter-server-driven-ui
+documentation: https://github.com/rhea-so-lab/flutter-server-driven-ui/wiki
