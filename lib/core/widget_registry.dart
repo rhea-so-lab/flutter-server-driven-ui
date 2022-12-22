@@ -5,16 +5,16 @@ import 'base_widget.dart';
 class WidgetRegistry {
   static final Map<String, WidgetFactory> _factories = {};
 
-  static void register(String type, WidgetFactory factory) {
-    String key = type.toLowerCase();
+  static void register(String widgetName, WidgetFactory factory) {
+    String key = widgetName.toLowerCase();
     if (_factories.containsKey(key)) {
       return;
     }
     _factories[key] = factory;
   }
 
-  static BaseWidget? create(String type) {
-    WidgetFactory? factory = _factories[type.toLowerCase()];
+  static BaseWidget? create(String widgetName) {
+    WidgetFactory? factory = _factories[widgetName.toLowerCase()];
     return factory?.call();
   }
 }

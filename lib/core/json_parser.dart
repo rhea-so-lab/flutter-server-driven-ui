@@ -5,10 +5,14 @@ import 'widget_registry.dart';
 
 class JSONParser {
   static BaseWidget toWidget(JSON json) {
-    String type = json["type"];
-    BaseWidget? widget = WidgetRegistry.create(type);
+    var widgetName = json["widgetName"];
+    if (widgetName == null) {
+      throw Exception("Empty widget name field detected");
+    }
+
+    BaseWidget? widget = WidgetRegistry.create(widgetName);
     if (widget == null) {
-      throw Exception("Unsupported type: $type");
+      throw Exception("Unsupported widget: $widgetName");
     }
 
     var properties = json["properties"];
