@@ -4,18 +4,23 @@ import 'package:flutter/widgets.dart';
 import 'package:server_driven_ui/adapter/http.adapter.dart';
 import 'package:server_driven_ui/core/content_provider.dart';
 import 'package:server_driven_ui/core/json_parser.dart';
+import 'package:server_driven_ui/core/page_transition.dart';
 import 'package:server_driven_ui/core/route_widget.dart';
 import 'package:server_driven_ui/type/json.type.dart';
 
 class WidgetAction {
   String type = "";
   String url = "";
+  String animationType = "";
+  int animationTime = 500;
   bool force = false;
 
   void setProperties(JSON json) {
-    type = json["actionType"] ?? "";
-    url = json["url"] ?? "";
-    force = json["force"] ?? false;
+    type = json["actionType"] ?? type;
+    url = json["url"] ?? url;
+    force = json["force"] ?? force;
+    animationType = json["animationType"] ?? animationType;
+    animationTime = json["animationTime"] ?? animationTime;
   }
 
   Future<dynamic> execute(BuildContext context, {JSON data = const {}}) {
@@ -45,20 +50,21 @@ class WidgetAction {
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
-            pageBuilder: (context, animation1, animation2) =>
-                RouteWidget(provider: HTTPContentProvider(url)),
-            transitionDuration: Duration(milliseconds: 100),
-            reverseTransitionDuration: Duration(milliseconds: 100),
-          ));
+              pageBuilder: (context, animation1, animation2) =>
+                  RouteWidget(provider: HTTPContentProvider(url)),
+              transitionDuration: Duration(milliseconds: animationTime),
+              reverseTransitionDuration: Duration(milliseconds: animationTime),
+              transitionsBuilder: getPageTransition(animationType)));
     } else {
       Navigator.push(
-          context,
-          PageRouteBuilder(
+        context,
+        PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) =>
                 RouteWidget(provider: HTTPContentProvider(url)),
-            transitionDuration: Duration(milliseconds: 100),
-            reverseTransitionDuration: Duration(milliseconds: 100),
-          ));
+            transitionDuration: Duration(milliseconds: animationTime),
+            reverseTransitionDuration: Duration(milliseconds: animationTime),
+            transitionsBuilder: getPageTransition(animationType)),
+      );
     }
   }
 
