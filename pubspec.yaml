@@ -1,0 +1,14 @@
+# `flutter pub publish` to publishing
+name: server_driven_ui
+description: Server Driven UI Library
+version: 0.0.1
+environment:
+  sdk: ">=2.18.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.5
+  http_parser: ^4.0.2
+
+repository: https://github.com/rhea-so-lab/flutter-server-driven-ui
