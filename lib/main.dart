@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:server_driven_ui/core/content_provider.dart';
+import 'package:server_driven_ui/core/json_parser.dart';
 import 'package:server_driven_ui/core/route_widget.dart';
 import 'package:server_driven_ui/core/base_widget.dart';
 import 'package:server_driven_ui/core/widget_registry.dart';
 import 'package:server_driven_ui/type/json.type.dart';
 
 class ScaffoldWidget extends BaseWidget {
+  BaseWidget? title;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: getChildWidget(context));
+    return Scaffold(
+        body: getChildWidget(context),
+        appBar: AppBar(
+          title: title?.build(context),
+        ));
+  }
+
+  @override
+  void setProperties(JSON json) {
+    title = JSONParser.toWidget(json["title"]);
   }
 }
 
