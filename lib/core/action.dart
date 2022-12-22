@@ -44,7 +44,7 @@ class WidgetAction {
     }
 
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      throw Exception('Only can route url with starts http or https');
+      return;
     }
 
     if (force) {
