@@ -16,3 +16,14 @@ class HTTPContentProvider extends ContentProvider {
     return HTTPAdapter.post(_url, data: data);
   }
 }
+
+class StaticContentProvider extends ContentProvider {
+  final String content;
+
+  StaticContentProvider({required this.content});
+
+  @override
+  Future<String> getContent() async {
+    return content;
+  }
+}

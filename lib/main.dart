@@ -85,7 +85,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: RouteWidget(
-            provider: HTTPContentProvider('http://localhost:4001')));
+        home: RouteWidget(provider: StaticContentProvider(content: """
+{
+    "widgetName": "Scaffold",
+    "properties": {
+      "title": {
+        "widgetName": "Text",
+        "properties": {
+          "message": "Title"
+        }
+      }
+    },
+    "child": {
+      "widgetName": "Text",
+      "properties": {
+        "message": "Main Page",
+        "onClick": {
+          "actionType": "Command",
+          "url": "http://localhost:4001/button"
+        }
+      }
+    }
+  }
+""")));
   }
 }
