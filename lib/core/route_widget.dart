@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:server_driven_ui/type/json.type.dart';
 
 import 'content_provider.dart';
@@ -36,7 +36,7 @@ class _RouteWidgetState extends State<RouteWidget> {
           throw Exception(snapshot.error.toString());
         }
         if (!snapshot.hasData) {
-          return SizedBox(); // Loading
+          return CupertinoActivityIndicator();
         }
         JSON json = jsonDecode(snapshot.data!);
         return (JSONParser.toWidget(json)).build(context);

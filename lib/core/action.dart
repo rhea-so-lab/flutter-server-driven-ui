@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:server_driven_ui/adapter/http.adapter.dart';
 import 'package:server_driven_ui/core/content_provider.dart';
 import 'package:server_driven_ui/core/json_parser.dart';
-import 'package:server_driven_ui/core/page_transition.dart';
 import 'package:server_driven_ui/core/route_widget.dart';
 import 'package:server_driven_ui/type/json.type.dart';
 
