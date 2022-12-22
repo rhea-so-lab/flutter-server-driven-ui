@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:server_driven_ui/core/action.dart';
 import 'package:server_driven_ui/core/content_provider.dart';
 import 'package:server_driven_ui/core/json_parser.dart';
+import 'package:server_driven_ui/core/page_transition_registry.dart';
 import 'package:server_driven_ui/core/route_widget.dart';
 import 'package:server_driven_ui/core/base_widget.dart';
 import 'package:server_driven_ui/core/widget_registry.dart';
@@ -55,10 +56,26 @@ class TextWidget extends BaseWidget {
   }
 }
 
+AnimatedWidget verticalTransition(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child) {
+  var begin = Offset(0.0, 1.0);
+  var end = Offset.zero;
+  var curve = Curves.ease;
+  var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+  return SlideTransition(
+    position: animation.drive(tween),
+    child: child,
+  );
+}
+
 Future<void> main() async {
   WidgetRegistry.register('Scaffold', () => ScaffoldWidget());
   WidgetRegistry.register('Column', () => ColumnWidget());
   WidgetRegistry.register('Text', () => TextWidget());
+  PageTransitionRegistry.register('vertical', verticalTransition);
   runApp(const MyApp());
 }
 

@@ -8,6 +8,8 @@ import 'package:server_driven_ui/core/page_transition.dart';
 import 'package:server_driven_ui/core/route_widget.dart';
 import 'package:server_driven_ui/type/json.type.dart';
 
+import 'page_transition_registry.dart';
+
 class WidgetAction {
   String type = "";
   String url = "";
@@ -63,7 +65,7 @@ class WidgetAction {
                 RouteWidget(provider: HTTPContentProvider(url)),
             transitionDuration: Duration(milliseconds: animationTime),
             reverseTransitionDuration: Duration(milliseconds: animationTime),
-            transitionsBuilder: getPageTransition(animationType)),
+            transitionsBuilder: PageTransitionRegistry.find(animationType)),
       );
     }
   }
