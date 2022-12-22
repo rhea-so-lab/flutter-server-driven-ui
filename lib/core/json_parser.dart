@@ -1,23 +1,18 @@
 import 'package:server_driven_ui/type/json.type.dart';
 
+import 'action.dart';
 import 'base_widget.dart';
 import 'widget_registry.dart';
 
 class JSONParser {
   static BaseWidget toWidget(JSON json) {
-    var widgetName = json["widgetName"];
-    if (widgetName == null) {
-      throw Exception("Empty widget name field detected");
-    }
-
-    BaseWidget? widget = WidgetRegistry.create(widgetName);
-    if (widget == null) {
-      throw Exception("Unsupported widget: $widgetName");
-    }
+    BaseWidget widget = WidgetRegistry.create(json["widgetName"]);
 
     var properties = json["properties"];
     if (properties is JSON && properties.isNotEmpty) {
       widget.setProperties(properties);
+    } else {
+      widget.setProperties({});
     }
 
     var child = json["child"];
@@ -31,5 +26,19 @@ class JSONParser {
     }
 
     return widget;
+  }
+
+  static WidgetAction toAction(JSON? json) {
+    if (json == null) {
+      return WidgetAction();
+    }
+
+    var actionType = json["actionType"];
+    if (actionType == null) {
+      throw Exception("Empty action type field detected");
+    }
+    WidgetAction action = WidgetAction();
+    action.setProperties(json);
+    return action;
   }
 }

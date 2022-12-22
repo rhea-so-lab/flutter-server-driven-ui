@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:server_driven_ui/core/action.dart';
 import 'package:server_driven_ui/core/content_provider.dart';
 import 'package:server_driven_ui/core/json_parser.dart';
 import 'package:server_driven_ui/core/route_widget.dart';
@@ -7,14 +8,13 @@ import 'package:server_driven_ui/core/widget_registry.dart';
 import 'package:server_driven_ui/type/json.type.dart';
 
 class ScaffoldWidget extends BaseWidget {
-  BaseWidget? title;
-
+  late BaseWidget title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: getChildWidget(context),
         appBar: AppBar(
-          title: title?.build(context),
+          title: title.build(context),
         ));
   }
 
@@ -35,16 +35,23 @@ class ColumnWidget extends BaseWidget {
 }
 
 class TextWidget extends BaseWidget {
-  String message = "";
+  late String message;
+  late WidgetAction onClick;
 
   @override
   Widget build(BuildContext context) {
-    return Text(message);
+    return GestureDetector(
+      child: Text(message),
+      onTap: () {
+        onClick.execute(context);
+      },
+    );
   }
 
   @override
   void setProperties(JSON json) {
-    message = json["message"];
+    message = json["message"] ?? "";
+    onClick = JSONParser.toAction(json["onClick"]);
   }
 }
 

@@ -36,7 +36,7 @@ class _RouteWidgetState extends State<RouteWidget> {
           throw Exception(snapshot.error.toString());
         }
         if (!snapshot.hasData) {
-          return Container(); // Loading
+          return SizedBox(); // Loading
         }
         JSON json = jsonDecode(snapshot.data!);
         return (JSONParser.toWidget(json)).build(context);

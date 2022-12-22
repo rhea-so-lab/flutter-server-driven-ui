@@ -1,6 +1,7 @@
 import 'package:server_driven_ui/type/widget_factory.type.dart';
 
 import 'base_widget.dart';
+import 'blank_widget.dart';
 
 class WidgetRegistry {
   static final Map<String, WidgetFactory> _factories = {};
@@ -13,8 +14,15 @@ class WidgetRegistry {
     _factories[key] = factory;
   }
 
-  static BaseWidget? create(String widgetName) {
+  static BaseWidget create(String? widgetName) {
+    if (widgetName == null) {
+      return BlankWidget();
+    }
     WidgetFactory? factory = _factories[widgetName.toLowerCase()];
-    return factory?.call();
+    BaseWidget? widget = factory?.call();
+    if (widget == null) {
+      return BlankWidget();
+    }
+    return widget;
   }
 }
