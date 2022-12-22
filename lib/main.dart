@@ -43,7 +43,7 @@ class TextWidget extends BaseWidget {
     return GestureDetector(
       child: Text(message),
       onTap: () {
-        onClick.execute(context);
+        onClick.execute(context, data: {'test': 'Hello, World!'});
       },
     );
   }

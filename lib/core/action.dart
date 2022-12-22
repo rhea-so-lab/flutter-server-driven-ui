@@ -18,7 +18,7 @@ class WidgetAction {
   void setProperties(JSON json) {
     type = json["actionType"] ?? type;
     url = json["url"] ?? url;
-    force = json["force"] ?? force;
+    force = json["force"] == null ? force : json["force"];
     animationType = json["animationType"] ?? animationType;
     animationTime = json["animationTime"] ?? animationTime;
   }
@@ -47,14 +47,14 @@ class WidgetAction {
     }
 
     if (force) {
+      Navigator.popUntil(context, (route) => route.isFirst);
       Navigator.pushReplacement(
           context,
           PageRouteBuilder(
               pageBuilder: (context, animation1, animation2) =>
                   RouteWidget(provider: HTTPContentProvider(url)),
-              transitionDuration: Duration(milliseconds: animationTime),
-              reverseTransitionDuration: Duration(milliseconds: animationTime),
-              transitionsBuilder: getPageTransition(animationType)));
+              transitionDuration: Duration.zero,
+              reverseTransitionDuration: Duration.zero));
     } else {
       Navigator.push(
         context,
