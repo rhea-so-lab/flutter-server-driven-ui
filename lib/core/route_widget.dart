@@ -32,6 +32,9 @@ class _RouteWidgetState extends State<RouteWidget> {
     return FutureBuilder(
       future: content,
       builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          throw Exception(snapshot.error.toString());
+        }
         if (!snapshot.hasData) {
           return Container(); // Loading
         }
