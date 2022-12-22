@@ -1,7 +1,7 @@
 # `flutter pub publish` to publishing
 name: server_driven_ui
 description: Make easy to implement Server Driven UI pattern on Flutter.
-version: 0.0.1
+version: 0.0.2
 environment:
   sdk: ">=2.18.6 <3.0.0"
 
