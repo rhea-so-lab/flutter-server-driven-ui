@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:server_driven_ui/type/json.type.dart';
+import 'package:server_driven_ui/widget/blank.widget.dart';
 
 import 'content_provider.dart';
 import 'json_parser.dart';
@@ -33,7 +34,7 @@ class _RouteWidgetState extends State<RouteWidget> {
       future: content,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          throw Exception(snapshot.error.toString());
+          return BlankWidget(reason: snapshot.error.toString()).build(context);
         }
         if (!snapshot.hasData) {
           return CupertinoActivityIndicator();

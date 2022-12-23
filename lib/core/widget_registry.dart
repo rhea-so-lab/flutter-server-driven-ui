@@ -20,12 +20,12 @@ class WidgetRegistry {
 
   static BaseWidget create(String? widgetName) {
     if (widgetName == null) {
-      return BlankWidget();
+      return BlankWidget(reason: "Not found widget name");
     }
     WidgetFactory? factory = _factories[widgetName.toLowerCase()];
     BaseWidget? widget = factory?.call();
     if (widget == null) {
-      return BlankWidget();
+      return BlankWidget(reason: "Unsupported widget $widgetName");
     }
     return widget;
   }
