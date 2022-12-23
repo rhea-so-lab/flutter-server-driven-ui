@@ -77,15 +77,9 @@ String json = """
     }
   },
   "child": {
-    "widgetName": "Text",
+    "widgetName": "Dynamic",
     "properties": {
-      "message": "Click me",
-      "onClick": {
-        "actionType": "Route",
-        "url": "http://localhost:4001/sub_page",
-        "animationType": "vertical",
-        "animationTime": 1000
-      }
+      "url": "http://localhost:60004/"
     }
   }
 }
