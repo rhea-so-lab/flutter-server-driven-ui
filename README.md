@@ -73,7 +73,7 @@ void main() {
 
 ## 🖼️ Architecture
 
-Currently writing...
+<img width="808" alt="image" src="https://user-images.githubusercontent.com/25793226/209541133-4979f5c0-2aff-4651-87ca-81c9dfd17321.png">
 
 ## 📄 Documentation
 
