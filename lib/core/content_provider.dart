@@ -6,14 +6,14 @@ abstract class ContentProvider {
 }
 
 class HTTPContentProvider extends ContentProvider {
-  final String _url;
+  final String url;
   final JSON data;
 
-  HTTPContentProvider(this._url, {this.data = const {}});
+  HTTPContentProvider({required this.url, this.data = const {}});
 
   @override
   Future<String> getContent() async {
-    return HTTPAdapter.post(_url, data: data);
+    return HTTPAdapter.post(url, data: data);
   }
 }
 

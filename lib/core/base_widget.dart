@@ -7,7 +7,7 @@ abstract class BaseWidget {
   BaseWidget? getChild() => children.isEmpty ? null : children.first;
   Widget? getChildWidget(BuildContext context) =>
       children.isEmpty ? null : children.first.build(context);
-  List<BaseWidget> getChildren(BuildContext context) => children;
+  List<BaseWidget> getChildren() => children;
   List<Widget> getChildrenWidget(BuildContext context) =>
       children.map((e) => e.build(context)).toList();
   void setProperties(JSON json) {}
