@@ -17,6 +17,6 @@ class DynamicWidget extends BaseWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RouteWidget(provider: HTTPContentProvider(url, data: data));
+    return RouteWidget(provider: HTTPContentProvider(url: url, data: data));
   }
 }
