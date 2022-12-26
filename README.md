@@ -5,7 +5,7 @@
 
 # Flutter Server Driven UI
 
-> 🚀 Server Driven UI Module for Flutter. New features to be deployed on all platforms simultaneously via a backend change, without releasing new versions of the native apps.
+> 🚀 Server Driven UI Package for Flutter. New features to be deployed on all platforms simultaneously via a backend change, without releasing new versions of the native apps.
 
 ## 🚀 Quick Start
 
