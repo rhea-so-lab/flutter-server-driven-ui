@@ -53,7 +53,7 @@ class WidgetAction {
           context,
           PageRouteBuilder(
               pageBuilder: (context, animation1, animation2) =>
-                  RouteWidget(provider: HTTPContentProvider(url)),
+                  RouteWidget(provider: HTTPContentProvider(url: url)),
               transitionDuration: Duration.zero,
               reverseTransitionDuration: Duration.zero));
     } else {
@@ -61,7 +61,7 @@ class WidgetAction {
         context,
         PageRouteBuilder(
             pageBuilder: (context, animation1, animation2) =>
-                RouteWidget(provider: HTTPContentProvider(url)),
+                RouteWidget(provider: HTTPContentProvider(url: url)),
             transitionDuration: Duration(milliseconds: animationTime),
             reverseTransitionDuration: Duration(milliseconds: animationTime),
             transitionsBuilder: PageTransitionRegistry.find(animationType)),
