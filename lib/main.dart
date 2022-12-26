@@ -23,25 +23,6 @@ class ColumnWidget extends BaseWidget {
   }
 }
 
-class TextWidget extends BaseWidget {
-  late String message;
-  late WidgetAction onClick;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Text(message),
-      onTap: () => onClick.execute(context),
-    );
-  }
-
-  @override
-  void setProperties(JSON json) {
-    message = json["message"] ?? "";
-    onClick = JSONParser.toAction(json["onClick"]);
-  }
-}
-
 AnimatedWidget verticalTransition(
     BuildContext context,
     Animation<double> animation,
@@ -60,7 +41,6 @@ AnimatedWidget verticalTransition(
 void main() {
   WidgetRegistry.register('Scaffold', () => ScaffoldWidget());
   WidgetRegistry.register('Column', () => ColumnWidget());
-  WidgetRegistry.register('Text', () => TextWidget());
   PageTransitionRegistry.register('vertical', verticalTransition);
   runApp(const MyApp());
 }
@@ -72,14 +52,17 @@ String json = """
     "title": {
       "widgetName": "Text",
       "properties": {
-        "message": "Title"
+        "data": "앱 제목",
+        "fontSize": 20,
+        "color": "#FFFFFF"
       }
     }
   },
   "child": {
-    "widgetName": "Dynamic",
+    "widgetName": "Text",
     "properties": {
-      "url": "http://localhost:60004/"
+      "data": "http://localhost:60004/",
+      "color": "#000000"
     }
   }
 }
