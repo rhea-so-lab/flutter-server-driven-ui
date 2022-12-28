@@ -1,7 +1,7 @@
 # `flutter pub publish` to publishing
 name: server_driven_ui
 description: Server Driven UI Package for Flutter. New features to be deployed on all platforms simultaneously via a backend change, without releasing new versions of the native apps.
-version: 0.0.4
+version: 0.0.5
 platforms:
   android:
   ios:

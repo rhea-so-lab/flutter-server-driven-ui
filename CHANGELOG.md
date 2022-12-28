@@ -1,3 +1,7 @@
+## v0.0.5
+
+- update README.md
+
 ## v0.0.4
 
 - add documentation info in pubspec.yaml
